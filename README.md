@@ -17,7 +17,7 @@ Here's how you authenticate:
 
 Now you can use your authorize function anywhere you like:
 
-```
+``` clojure
 (app (my-own-authorize (request :get "/my-endpoint")))
 ```
 
