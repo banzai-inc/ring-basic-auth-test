@@ -11,8 +11,9 @@ Here's how you authenticate:
 ``` clojure
 (use 'ring-basic-auth-test.authorize)
 
-(defn my-own-authorize []
-  (authorize "username" "password"))
+(defn my-own-authorize
+  [request]
+  ((authorize "username" "password") request))
 ```
 
 Now you can use your authorize function anywhere you like:

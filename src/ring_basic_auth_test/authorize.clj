@@ -1,5 +1,6 @@
 (ns ring-basic-auth-test.authorize
-  (:require [clojure.data.codec.base64 :as base64]))
+  (:require [clojure.data.codec.base64 :as base64]
+            [ring.mock.request :as req]))
 
 (defn- byte-transform
   [direction-fn string]
@@ -12,6 +13,6 @@
 (defn authorize
   [username password]
   (fn [request]
-    (header request "authorization"
-            (str "Basic "
-                 (encode-base64 (str username ":" password))))))
+    (req/header request "authorization"
+                (str "Basic "
+                     (encode-base64 (str username ":" password))))))
